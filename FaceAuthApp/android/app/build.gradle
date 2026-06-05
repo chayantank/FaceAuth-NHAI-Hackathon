@@ -78,6 +78,13 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.faceauth.app"
+    
+    sourceSets {
+        main {
+            assets.srcDirs += ['../../assets']
+        }
+    }
+
     defaultConfig {
         applicationId "com.faceauth.app"
         minSdkVersion rootProject.ext.minSdkVersion
