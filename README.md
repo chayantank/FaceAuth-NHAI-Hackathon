@@ -42,6 +42,8 @@ This repository contains the complete cross-platform prototype (React Native iOS
 ```bash
 cd FaceAuthApp
 npm install
+# Link the ONNX ML models to the native Android/iOS bundles
+npx react-native-asset
 ```
 
 **For iOS:**
