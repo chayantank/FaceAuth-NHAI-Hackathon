@@ -53,7 +53,7 @@ Camera → SCRFD → MiniFASNet → MobileFaceNet → MMKV match → Result   [A
 ### Key Properties:
 - 100% offline — zero network calls during authentication
 - Cross-platform — React Native, Android + iOS
-- 4.3 MB total model footprint (after INT8 quantization)
+- 15.65 MB total model footprint
 - Dual-layer anti-fraud liveness system
 - No face images stored — only encrypted 512-D vectors
 
@@ -94,14 +94,14 @@ Camera → SCRFD → MiniFASNet → MobileFaceNet → MMKV match → Result   [A
 
 ---
 
-## Slide 5 — ML Models (Post-Quantization)
+## Slide 5 — ML Models (FP32)
 
-| Model | Role | Float32 Size | INT8 Size | Reduction |
-|-------|------|-------------|-----------|-----------|
-| SCRFD-500MF | Face detection + landmarks | 2.41 MB | **0.68 MB** | 3.6× |
-| MobileFaceNet | 512-D face embedding | 12.99 MB | **3.35 MB** | 3.9× |
-| MiniFASNetV2 | CNN spoof detection | 0.26 MB | **0.26 MB** | — |
-| **TOTAL** | | **15.66 MB** | **4.29 MB** | **3.7×** |
+| Model | Role | Size |
+|-------|------|------|
+| SCRFD-500MF | Face detection + landmarks | **2.41 MB** |
+| MobileFaceNet | 512-D face embedding | **12.98 MB** |
+| MiniFASNetV2 | CNN spoof detection | **0.26 MB** |
+| **TOTAL** | | **15.65 MB** |
 
 ### Model Details:
 
@@ -240,27 +240,13 @@ Enrollments → sync queue                 SyncManager auto-fires
 
 ---
 
-## Slide 10 — INT8 Quantization (Innovation)
 
-### Post-Training Dynamic Quantization
-Applied using ONNX Runtime's quantization toolkit. Converts Float32 weights to UInt8 integers — 74% size reduction, <1% accuracy loss.
-
-| Model | Float32 | INT8 | Saving |
-|-------|---------|------|--------|
-| MobileFaceNet | 12.99 MB | 3.35 MB | **9.64 MB** |
-| SCRFD-500MF | 2.41 MB | 0.68 MB | **1.73 MB** |
-| MiniFASNetV2 | 0.26 MB | 0.26 MB | — |
-| **Total** | **15.66 MB** | **4.29 MB** | **11.37 MB saved** |
-
-**Final footprint: 4.3 MB** — 5× under the 20MB target, leaving 15.7 MB of headroom for future model improvements.
-
----
 
 ## Slide 11 — Performance Summary
 
 | Metric | Target | Achieved |
 |--------|--------|---------|
-| Model size | < 20 MB | **4.3 MB** ✅ |
+| Model size | < 20 MB | **15.65 MB** ✅ |
 | Auth latency | < 1,000 ms | **~70 ms** ✅ |
 | Android support | 8.0+ (API 24) | **API 24+** ✅ |
 | iOS support | 12+ | **iOS 12+** ✅ |
@@ -349,7 +335,7 @@ syncManager.initialize(); // Auto-syncs when network restores
 FaceAuth solves NHAI's most pressing field operations problem: **authenticating workers in zero-network zones** — safely, accurately, and without internet.
 
 By combining:
-- **Lightweight INT8-quantized ONNX models** (4.3 MB total)
+- **Lightweight FP32 ONNX models** (15.65 MB total)
 - **Dual-layer liveness** (active geometry + passive CNN)
 - **Encrypted offline-first storage**
 - **Auto-sync on connectivity restore**

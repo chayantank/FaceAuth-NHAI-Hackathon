@@ -11,7 +11,7 @@ This repository contains the complete cross-platform prototype (React Native iOS
 1. **Framework Compatibility:** 
    Fully built in React Native, easily deployable to both iOS and Android. Integration with existing React Native architectures (like Datalake 3.0) is trivial.
 2. **Model Footprint (< 20MB):** 
-   Using INT8 quantization strategies and optimized models from the InsightFace library (`buffalo_sc`), the entire on-device model package is **< 4.5 MB**.
+   Using highly optimized models from the InsightFace library (`buffalo_sc`) and MiniVision, the entire on-device model package is exactly **15.65 MB**.
 3. **Processing Speed (< 1s):** 
    Inference is accelerated using `onnxruntime-react-native` communicating directly with the React Native VisionCamera JSI layer, processing face detection, liveness, and feature extraction in **< 100ms** per frame.
 4. **Offline Active Liveness:** 
@@ -69,7 +69,7 @@ npx react-native run-android
 
 | Metric | Measured Value | Requirement |
 | ------ | -------------- | ----------- |
-| Total AI Size | **4.5 MB** | < 20 MB |
+| Total AI Size | **15.65 MB** | < 20 MB |
 | Verify Speed | **~85 ms** | < 1 sec |
 | Accuracy (LFW) | **99.50%** | > 95% |
 | Minimum Specs | 3GB RAM | 3GB RAM |
