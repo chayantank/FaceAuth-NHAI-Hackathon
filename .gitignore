@@ -1,0 +1,14 @@
+model_prep/venv
+model_prep/_temp_downloads
+.vscode
+*.code-workspace
+**/.DS_Store
+FaceAuthApp/vendor
+FaceAuthApp/.bundle
+FaceAuthNHAIHackathon.zip
+FaceAuthApp/ios/Pods
+FaceAuthApp/node_modules
+FaceAuthApp/android/.gradle
+FaceAuthApp/android/app/build
+FaceAuthApp/android/build
+FaceAuthApp/ios/build
