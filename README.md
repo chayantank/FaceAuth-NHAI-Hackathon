@@ -6,7 +6,7 @@ This repository contains the complete cross-platform prototype (React Native iOS
 
 ---
 
-## 🚀 Key Features & Constraints Met
+## Key Features & Constraints Met
 
 1. **Framework Compatibility:** 
    Fully built in React Native, easily deployable to both iOS and Android. Integration with existing React Native architectures (like Datalake 3.0) is trivial.
@@ -23,49 +23,63 @@ This repository contains the complete cross-platform prototype (React Native iOS
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
-- **Face Detection & Landmarks:** `SCRFD-500MF` (2.5MB)
-- **Face Recognition / Embeddings:** `MobileFaceNet` (2MB)
-- **Passive Liveness / Anti-spoofing:** `MiniFASNetV2`
+- **Face Detection & Landmarks:** `SCRFD-500MF` (2.41 MB)
+- **Face Recognition / Embeddings:** `MobileFaceNet` (12.98 MB)
+- **Passive Liveness / Anti-spoofing:** `MiniFASNetV2` (0.26 MB)
 - **Camera Interface:** `react-native-vision-camera` (v5 hooks)
 - **Local Storage:** `react-native-mmkv` + Keychain Enclaves
 
-## 🛠️ How to Build and Run
+## Setup and Installation Instructions
 
-### 1. Prerequisites
-- Node.js & npm/Yarn
-- Ruby and CocoaPods (for iOS)
-- Android SDK & Java Runtime Environment (for Android)
+This project is built using React Native CLI. Please follow these detailed steps to compile the application on your local machine.
 
-### 2. Installation
+### 1. System Requirements
+- Node.js (v18 or newer)
+- npm or Yarn package manager
+- macOS with Xcode installed (required for iOS compilation)
+- Android Studio with Android SDK and Java Development Kit (JDK 17+) (required for Android compilation)
+
+### 2. Base Installation
+Navigate to the source code directory and install the Node.js dependencies.
+
 ```bash
 cd FaceAuthApp
 npm install
 ```
 
-**For iOS:**
+### 3. iOS Compilation
+For iOS devices or simulators, CocoaPods is required to link the native iOS dependencies.
+
 ```bash
 cd ios
+# Install the required iOS pods
 pod install
 cd ..
+
+# Launch the iOS application
 npx react-native run-ios
 ```
 
-**For Android:**
+### 4. Android Compilation
+For Android, Gradle will automatically map the ONNX ML models (`assets/models`) directly into the native build path, requiring no manual asset linking.
+
 ```bash
+# Start the Metro bundler in one terminal
 npx react-native start
-# In a new terminal
+
+# Open a new terminal window in the same directory and build the APK
 npx react-native run-android
 ```
 
-## 📂 Deliverables Overview
+## Deliverables Overview
 - `FaceAuthApp/src/ml/*` - Core offline ML inference pipelines and JSI bridges.
 - `FaceAuthApp/src/sync/*` - Connectivity listeners and AWS Sync/Purge queues.
-- `FaceAuthApp/assets/models/*` - The bundled ONNX models.
+- `FaceAuthApp/assets/models/*` - The bundled ONNX models mapping natively via Gradle and CocoaPods.
 - `presentation_content.md` - Raw content for the required technical presentation slides.
 
-## 📈 Performance Benchmarks
+## Performance Benchmarks
 
 | Metric | Measured Value | Requirement |
 | ------ | -------------- | ----------- |
